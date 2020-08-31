@@ -1,2 +1,2 @@
-language = "nodejs"
-run = ""
+language = "javascript"
+run = "node ./Main/problemSolvingPatterns.js"
