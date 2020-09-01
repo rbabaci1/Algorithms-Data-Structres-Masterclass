@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Main/multiPointersPattern.js"
+run = "node ./Main/slidingWindowMax.js"
