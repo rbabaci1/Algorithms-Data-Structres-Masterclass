@@ -11,7 +11,7 @@ function validAnagram(str1, str2) {
     for (let j = 0; j < str2.length; j++) {
         let letter = str2[j]
         if (!store[letter]) {
-            return false
+            return false;
         }
         store[letter] -= 1;
     }

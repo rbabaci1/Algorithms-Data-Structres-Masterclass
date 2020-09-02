@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Main/slidingWindowMax.js"
+run = "node ./Main/sameFrequency.js"
