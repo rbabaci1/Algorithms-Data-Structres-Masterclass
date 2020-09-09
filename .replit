@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Main/sameFrequency.js"
+run = "node ./Main/areThereDuplicates.js"
