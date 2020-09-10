@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Main/areThereDuplicates.js"
+run = "node ./Main/minSubArrayLen.js"
