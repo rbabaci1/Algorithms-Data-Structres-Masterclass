@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Main/minSubArrayLen.js"
+run = "node ./Main/longestSubString.js"
