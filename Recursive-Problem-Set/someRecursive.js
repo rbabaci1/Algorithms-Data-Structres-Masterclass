@@ -11,4 +11,4 @@ function someRecursive(arr, cb){
      return helper(arr, cb);
 }
 
-console.log(someRecursive([14, 10, 10], v => v > 10))
+console.log(someRecursive([4, 1, 10], v => v > 10))
