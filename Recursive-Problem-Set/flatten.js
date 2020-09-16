@@ -1,14 +1,14 @@
 function flatten(arrays) {
     let res = []
-    if (arrays.length === 0) return res;
-    
-    if (Array.isArray(arrays[0])) {
-      res = res.concat(flatten(arrays[0]))
-    } else {
-      res.push(arrays[0]);
+
+    for (let i = 0; i < arrays.length; i++) {
+        if (Array.isArray(arrays[i])) {
+            res = res.concat(flatten(arrays[i]))
+        } else {
+            res.push(arrays[i])
+        }
     }
-    
-    return res.concat(flatten(arrays.slice(1)))
+    return res;
 }
 
 console.log(flatten([1, 2, 3, [4, 5] ]))
