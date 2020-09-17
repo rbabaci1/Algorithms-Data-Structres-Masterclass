@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Recursive-Problem-Set/capitalizeFirst.js"
+run = "node ./Recursive-Problem-Set/nestedEvenSum.js"
