@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Recursive-Problem-Set/capitalizeWords.js"
+run = "node ./Recursive-Problem-Set/stringifyNumbers.js"
