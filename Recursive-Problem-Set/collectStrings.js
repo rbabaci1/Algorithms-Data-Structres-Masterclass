@@ -1,17 +1,14 @@
-function collectStrings(obj, strings=null, keys=null) {
+function collectStrings(obj, strings=null) {
     if (!strings) strings = [];
-    if (!keys) keys = Object.keys(obj);
-    
-    if (keys.length === 0) return strings;
 
-    if (typeof obj[keys[0]] === 'string') {
-            strings.push(obj[keys[0]]);
+    for (let key in obj) {
+        if (typeof obj[key] === "string") {
+            strings.push(obj[key]);
+        } else if (typeof obj[key] === "object") {
+            return collectStrings(obj[key], strings);
+        }
     }
-    if (typeof obj[keys[0]] === 'object' && obj[keys[0]]  !== null && !Array.isArray(obj[keys[0]])) {
-            collectStrings(obj[keys[0]], strings);
-    }
-        
-    return collectStrings(obj, strings, keys.slice(1));
+    return strings;
 }
 
 const obj = {
