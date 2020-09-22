@@ -1,21 +1,16 @@
 function stringifyNumbers(obj) {
-    let res = Object.assign({}, obj);
-
-    function r_helper(res, keys=null) {
-        if (!keys) keys = Object.keys(res);
-        if (keys.length === 0) return res;
-
-        if (typeof res[keys[0]] === 'number') {
-            res[keys[0]] = res[keys[0]].toString();
+    let newObj = {}
+    
+    for (let key in obj) {
+        if (typeof obj[key] === "number") {
+            newObj[key] = obj[key].toString()
+        } else if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+            newObj[key] = stringifyNumbers(obj[key])
+        } else {
+            newObj[key] = obj[key]
         }
-        if (typeof res[keys[0]] === 'object' && res[keys[0]]  !== null && !Array.isArray(res[keys[0]])) {
-            r_helper(res[keys[0]]);
-        }
-        
-        return r_helper(res, keys.slice(1));
     }
-
-    return r_helper(res);
+    return newObj
 }
 
 
