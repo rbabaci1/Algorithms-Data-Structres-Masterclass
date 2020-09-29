@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Sorting/bubbleSort.js"
+run = "node ./Sorting/selectionSort.js"
