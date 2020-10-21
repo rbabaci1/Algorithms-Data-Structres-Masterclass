@@ -14,4 +14,36 @@ function mergeTwoArrays(arr1, arr2) {
     }
 }
 
-console.log(mergeTwoArrays([2, 5, 6, 7], [1, 3, 9, 11]))
+function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
+
+    let mid = Math.floor(arr.length / 2)
+    let left = arr.slice(0, mid);
+    let right = arr.slice(mid);
+
+    return mergeTwoArrays(mergeSort(left), mergeSort(right))
+}
+
+// Iterative merge sort
+// function mergeSort(arr) {
+//     let res = [], i = 0
+
+//     arr.forEach(el => res.push([el]))
+
+//     while (res.length > 1) {
+//         let left = res[i]
+//         let right = res[i + 1]
+        
+//         if (left && right) {
+//             res[i] = mergeTwoArrays(left, right)
+//             res.splice(i + 1, 1)
+//         }
+//         i++;
+        
+//         if (i >= res.length) i = 0;
+//     }
+
+//     return res.length ? res[0] : res
+// }
+
+console.log(mergeSort([2, 3, 7, 1, 0, 4, 10, -1]))
