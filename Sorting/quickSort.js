@@ -29,5 +29,5 @@ function quickSort(arr, start=0, end=arr.length) {
     return arr;
 }
 
-console.log(quickSort([4, 3, 7, 2, 1, 5, -1, 8, 9, -2, -22]))
+console.log(quickSort([4, 3, 7, 2, 5, -1]))
 // console.log(quickSort([1, 2, 3, 4, 5, 7]))
