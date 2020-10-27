@@ -8,29 +8,22 @@ function digitCount(num) {
 
 function mostDigits(digits, maxDigits = 0) {
     digits.forEach(digit => {
-        maxDigits = Math.max(maxDigits, digitCount(digit))
+        maxDigits = Math.max(maxDigits, digitCount(digit));
     });
     return maxDigits;
 }
 
 function radixSort(nums) {
-    let numIterations = mostDigits(nums);
+    let maxDigits = mostDigits(nums);
 
-    for (let i = 0; i < numIterations; i++) {
-        let buckets = new Array(10);
+    for (let i = 0; i < maxDigits; i++) {
+        let buckets = Array.from({length: 10}, () => []);
 
         nums.forEach((num, j) => {
-            let index = getDigit(nums[j], i);
-
-            if (!buckets[index]) buckets[index] = [];
-            buckets[index].push(nums[j]);
-        })
-
-        for (let j = 0, k = 0; j < buckets.length; j++) {
-            if (buckets[j]) {
-                buckets[j].forEach(el => nums[k++] = el)
-            }
-        }
+            let digit = getDigit(nums[j], i);
+            buckets[digit].push(nums[j]);
+        });
+        nums = [].concat(...buckets);
     }
 
     return nums;
