@@ -89,14 +89,13 @@ class SinglyLinkedList {
 
     // set the node at the given position with the new val
     set(newVal, position) {
-        if (position < 0 || position >= this.length) return null;
+        let foundNode = this.get(position);
 
-        let counter = 0, curr = this.head;
-        while (position !== counter++) {
-            curr = curr.next;
+        if (foundNode) {
+            foundNode.val = newVal;
+            return true;
         }
-        curr.val = newVal;
-        return curr;
+        return false;
     }
 }
 
