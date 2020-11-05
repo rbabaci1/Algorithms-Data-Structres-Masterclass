@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Data-Structures/singlyLinkedList.js"
+run = "node ./Data-Structures/binarySearchTree.js"
