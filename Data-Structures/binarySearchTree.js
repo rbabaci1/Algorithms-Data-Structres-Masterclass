@@ -51,8 +51,7 @@ class BST {
                 curr = curr.right;
             } else found = true;
         }
-
-        return found;
+        return found ? curr : false;
     }
 }
 
@@ -63,4 +62,4 @@ tree.insert(7);
 tree.insert(13);
 console.log(tree.insert(13))
 
-console.log(tree.contains(71))
+console.log(tree.contains(7))
