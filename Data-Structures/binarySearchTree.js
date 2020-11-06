@@ -39,6 +39,21 @@ class BST {
             }
         }
     }
+
+    contains(val) {
+        let curr = this.root;
+        while (true) {
+            if (curr.val === val) return true;
+
+            if (val < curr.val) {
+                if (!curr.left) return false;
+                curr = curr.left;
+            } else {
+                if (!curr.right) return false;
+                curr = curr.right;
+            }
+        }
+    }
 }
 
 const tree = new BST();
@@ -48,4 +63,4 @@ tree.insert(7);
 tree.insert(13);
 console.log(tree.insert(13))
 
-console.log(tree)
+console.log(tree.contains(130))
