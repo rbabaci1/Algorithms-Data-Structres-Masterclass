@@ -41,18 +41,18 @@ class BST {
     }
 
     contains(val) {
-        let curr = this.root;
-        while (true) {
-            if (curr.val === val) return true;
+        if (!this.root) return false;
 
+        let curr = this.root, found = false;
+        while (curr && !found) {
             if (val < curr.val) {
-                if (!curr.left) return false;
                 curr = curr.left;
-            } else {
-                if (!curr.right) return false;
+            } else if (val > curr.val) {
                 curr = curr.right;
-            }
+            } else found = true;
         }
+
+        return found;
     }
 }
 
@@ -63,4 +63,4 @@ tree.insert(7);
 tree.insert(13);
 console.log(tree.insert(13))
 
-console.log(tree.contains(130))
+console.log(tree.contains(71))
