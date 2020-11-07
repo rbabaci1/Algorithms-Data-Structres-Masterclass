@@ -69,14 +69,37 @@ class BST {
         return data;
     }
 
-    DFT(root=this.root, data=null) {
+    DFTPreOrder(root=this.root, data=null) {
         if (!this.root) return undefined;
         if (!data) data = [];
 
         data.push(root.val);
-        
-        if (root.left) this.DFT(root.left, data);
-        if (root.right) this.DFT(root.right, data);
+
+        if (root.left) this.DFTPreOrder(root.left, data);
+        if (root.right) this.DFTPreOrder(root.right, data);
+
+        return data;
+    }
+
+    DFTPostOrder(root=this.root, data=null) {
+        if (!this.root) return undefined;
+        if (!data) data = [];
+
+        if (root.left) this.DFTPostOrder(root.left, data);
+        if (root.right) this.DFTPostOrder(root.right, data);
+
+        data.push(root.val);
+
+        return data;
+    }
+
+    DFTInOrder(root=this.root, data=null) {
+        if (!this.root) return undefined;
+        if (!data) data = [];
+
+        if (root.left) this.DFTInOrder(root.left, data);
+        data.push(root.val);
+        if (root.right) this.DFTInOrder(root.right, data);
 
         return data;
     }
@@ -102,4 +125,6 @@ tree.insert(15);
 */
 
 // console.log(tree.BFT())
-console.log(tree.DFT())
+// console.log(tree.DFTPreOrder())
+// console.log(tree.DFTPostOrder())
+console.log(tree.DFTInOrder())
