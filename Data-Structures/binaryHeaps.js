@@ -1,6 +1,6 @@
 class MaxBinaryHeap {
     constructor() {
-        this.values = [20, 18, 17, 15, 14, 16, 13, 10, 9, 12, 5];
+        this.values = [33];
     }
 
     print() {
@@ -59,9 +59,12 @@ class MaxBinaryHeap {
         if (!this.values.length) return undefined;
 
         let max = this.values[0];
-        this.values[0] = this.values.pop();
+        let end = this.values.pop();
 
-        this.sinkDown();
+        if (this.values.length) {
+            this.values[0] = lastElement;
+            this.sinkDown();
+        }
         return max;
     }
 }
