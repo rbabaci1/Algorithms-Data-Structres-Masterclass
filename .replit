@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Data-Structures/binaryHeaps.js"
+run = "node ./Data-Structures/priorityQueue.js"
