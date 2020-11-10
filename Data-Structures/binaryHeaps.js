@@ -1,6 +1,6 @@
 class MaxBinaryHeap {
     constructor() {
-        this.values = [33];
+        this.values = [99, 33, 31, 22, 17, 9, 7, 1];
     }
 
     print() {
@@ -27,31 +27,29 @@ class MaxBinaryHeap {
     }
 
     sinkDown() {
-        let element = this.values[0], length = this.values.length;
-        let currIndex = 0;
+        let current = this.values[0], length = this.values.length, currentIdx = 0;
 
         while (true) {
-            let leftIdx = 2 * currIndex + 1;
-            let rightIdx = 2 * currIndex + 2;
-            let leftChild, rightChild, swap = false;
+            let leftIdx = 2 * currentIdx + 1;
+            let rightIdx = 2 * currentIdx + 2, swap = false;
 
-            if (leftIdx < length) {
-                leftChild = this.values[leftIdx];
-                if (leftChild > element) {
-                    swap = leftIdx;
-                }
-            } if (rightIdx < length) {
-                rightChild = this.values[rightIdx];
-                if ((swap && rightChild > leftChild) || (!swap && rightChild > element)) {
+            let leftChild = leftIdx < length ? this.values[leftIdx] : null;
+            let rightChild = rightIdx < length ? this.values[rightIdx] : null;
+
+            if (leftChild && leftChild > current) {
+                swap = leftIdx;
+            }
+            if (rightChild) {
+                if ((swap && rightChild > leftChild) || (!swap && rightChild > current)) {
                     swap = rightIdx;
-                } 
+                }
             }
 
             if (!swap) break;
 
-            this.values[currIndex] = this.values[swap];
-            this.values[swap] = element;
-            currIndex = swap;
+            this.values[currentIdx] = this.values[swap];
+            this.values[swap] = current;
+            currentIdx = swap;
         }
     }
 
@@ -62,7 +60,7 @@ class MaxBinaryHeap {
         let end = this.values.pop();
 
         if (this.values.length) {
-            this.values[0] = lastElement;
+            this.values[0] = end;
             this.sinkDown();
         }
         return max;
