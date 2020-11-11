@@ -5,6 +5,7 @@ class Node {
     }
 }
 
+// A priority queue implemented with a min binaryHeap
 class PriorityQueue {
     constructor() {
         this.data = [];
@@ -79,11 +80,12 @@ priorityQueue.enqueue("gunshot", 1);
 priorityQueue.enqueue("high fever", 4);
 priorityQueue.enqueue("broken arm", 2);
 priorityQueue.enqueue("glass in foot", 3);
+priorityQueue.enqueue("same priority", 2);
 
 
 
-// console.log(priorityQueue.dequeue())
-// console.log(priorityQueue.dequeue())
-// console.log(priorityQueue.dequeue())
+console.log(priorityQueue.dequeue())
+console.log(priorityQueue.dequeue())
+console.log(priorityQueue.dequeue())
 
-console.log(priorityQueue.data)
+// console.log(priorityQueue.data)
