@@ -40,7 +40,9 @@ class HashTable {
         for (let i = 0; i < this.keyMap.length; i++) {
             if (this.keyMap[i]) {
                 for (let k = 0; k < this.keyMap[i].length; k++) {
-                    keys.push(this.keyMap[i][k][0]);
+                    if (!keys.includes(this.keyMap[i][k][0])) {
+                        keys.push(this.keyMap[i][k][0]);
+                    }
                 }
             }
         }
@@ -54,7 +56,9 @@ class HashTable {
         for (let i = 0; i < this.keyMap.length; i++) {
             if (this.keyMap[i]) {
                 for (let k = 0; k < this.keyMap[i].length; k++) {
-                    values.push(this.keyMap[i][k][1]);
+                    if (!values.includes(this.keyMap[i][k][1])) {
+                        values.push(this.keyMap[i][k][1]);
+                    }
                 }
             }
         }
@@ -68,6 +72,7 @@ const hashTable = new HashTable(10);
 hashTable.set("rabah", 26)
 hashTable.set("habar", 27)
 hashTable.set("kyla", 23)
+hashTable.set("nance", 23)
 
 // console.log(hashTable.keyMap)
 
