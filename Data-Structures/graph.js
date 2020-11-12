@@ -34,27 +34,32 @@ class Graph {
         return this.adjancyList[vertex];
     }
 
-    DFTRecursive(startingVertex, visited=null) {
+    DFTRecursive(startingVertex, visited=null, result=null) {
         if (!this.adjancyList[startingVertex]) return undefined;
-        if (!visited) visited = new Set();
-        visited.add(startingVertex);
+        if (!visited && !result) {
+            visited = new Set(), result = [];
+            visited.add(startingVertex);
+        }
+        result.push(startingVertex);
 
         this.getNeighors(startingVertex).forEach(neighbor => {
             if (!visited.has(neighbor)) {
-                this.DFTRecursive(neighbor, visited);
+                visited.add(neighbor);
+                this.DFTRecursive(neighbor, visited, result);
             }
-        })
-        return visited;
-    }
+        })  
+        return result;
+    }         
 
     DFTIterative(startingVertex) {
         if (!this.adjancyList[startingVertex]) return undefined;
 
-        let stack = [startingVertex], visited = new Set();
+        let stack = [startingVertex], visited = new Set(), result = [];
+        visited.add(startingVertex);
         while (stack.length) {
-            console.log("+1")
             let curr = stack.pop();
-            
+            result.push(curr);
+        
             this.adjancyList[curr].forEach(neighbor => {
                 if (!visited.has(neighbor)) {
                     visited.add(neighbor)
@@ -62,8 +67,26 @@ class Graph {
                 }
             })
         }
+        return result;
+    }
 
-        return visited;
+    BFTIterative(startingVertex) {
+        if (!this.adjancyList[startingVertex]) return undefined;
+
+        let queue = [startingVertex], visited = new Set(), result = [];
+        visited.add(startingVertex);
+        while (queue.length) {
+            let curr = queue.shift();
+            result.push(curr);
+
+            this.adjancyList[curr].forEach(neighbor => {
+                if (!visited.has(neighbor)) {
+                    visited.add(neighbor);
+                    queue.push(neighbor);
+                }
+            })
+        }
+        return result;
     }
 }
 
@@ -83,8 +106,6 @@ graph.addEdge("C", "E")
 graph.addEdge("D", "E")
 graph.addEdge("D", "F")
 graph.addEdge("E", "F")
-graph.addEdge("F", "A")
-graph.addEdge("F", "B")
 
 // graph.removeEdge("oakland", "berkeley")
 
@@ -93,4 +114,5 @@ graph.addEdge("F", "B")
 console.log(graph.adjancyList);
 
 // console.log(graph.DFTRecursive("A"))
-console.log(graph.DFTIterative("A"))
+// console.log(graph.DFTIterative("A"))
+console.log(graph.BFTIterative("A"))
