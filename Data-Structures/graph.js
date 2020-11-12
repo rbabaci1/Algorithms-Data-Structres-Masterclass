@@ -35,14 +35,34 @@ class Graph {
     }
 
     DFTRecursive(startingVertex, visited=null) {
+        if (!this.adjancyList[startingVertex]) return undefined;
         if (!visited) visited = new Set();
         visited.add(startingVertex);
 
-        this.adjancyList[startingVertex].forEach(neighbor => {
+        this.getNeighors(startingVertex).forEach(neighbor => {
             if (!visited.has(neighbor)) {
                 this.DFTRecursive(neighbor, visited);
             }
         })
+        return visited;
+    }
+
+    DFTIterative(startingVertex) {
+        if (!this.adjancyList[startingVertex]) return undefined;
+
+        let stack = [startingVertex], visited = new Set();
+        while (stack.length) {
+            console.log("+1")
+            let curr = stack.pop();
+            
+            this.adjancyList[curr].forEach(neighbor => {
+                if (!visited.has(neighbor)) {
+                    visited.add(neighbor)
+                    stack.push(neighbor);
+                }
+            })
+        }
+
         return visited;
     }
 }
@@ -72,4 +92,5 @@ graph.addEdge("F", "B")
 // graph.removeVertex("san_jose");
 console.log(graph.adjancyList);
 
-console.log(graph.DFTRecursive("A"))
+// console.log(graph.DFTRecursive("A"))
+console.log(graph.DFTIterative("A"))
