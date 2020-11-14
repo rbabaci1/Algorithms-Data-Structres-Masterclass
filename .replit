@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Data-Structures/graph.js"
+run = "node ./Data-Structures/dijkstraAlgo.js"
