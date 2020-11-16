@@ -1,2 +1,2 @@
 language = "javascript"
-run = "node ./Data-Structures/dijkstraAlgo.js"
+run = "node ./Dynamic-Programming/fibonacci.js"
